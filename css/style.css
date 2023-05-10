@@ -50,9 +50,13 @@ main{
 }
 
 .clicked{
-    background-color: #fff;
+    background-color: blue;
+    color: #fff;
 }
 
+.square.end-of-the-game{
+    background-color: none;
+}
 /* .square::after{
     content: "";
     display: block;

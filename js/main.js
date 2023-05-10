@@ -1,9 +1,15 @@
 //Si crea la griglia in modo dinamico al click sul bottone "play"
 document.getElementById("grid-generator").addEventListener("click", 
 function(){
+
     generateGrid();
 
     let bombArr = bombGenerate ();
+    console.log(bombArr);
+
+    const resultArray = [];
+    console.log(resultArray);
+
     //creazione ciclo per riempire la griglia
     for (let i = 1; i < 100 + 1; i++){
 
@@ -24,16 +30,18 @@ function(){
     //Aggiunta event listner per l'elemento cliccato
     newSquare.addEventListener("click", 
     function (){
+        
+    resultArray.push(i);
+
     newSquare.classList.add("clicked");
-    console.log(i);
+    if(bombArr.includes(i)){
+        newSquare.style.backgroundColor = "red";
+        newSquare.innerHTML = "BOMBA!";
+        console.log("il tuo risultato è " + resultArray.length);
+    }
     });
+
 };
-
-    
-   
-
-
-
 });
 
 
@@ -71,7 +79,7 @@ function bombGenerate(){
     while(bombArray.length < 16){
 
     //Generazione randomica dei numeri bomba
-    let bomb = Math.floor((Math.random() * 16) + 1);
+    let bomb = Math.floor((Math.random() * 100) + 1);
     if (!bombArray.includes(bomb)) {
         //pusha il valore solo se non è presente nell'array
         bombArray.push(bomb);
